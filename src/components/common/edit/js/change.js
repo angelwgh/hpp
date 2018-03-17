@@ -16,6 +16,7 @@ class Change {
 		self[type+'Change']()
 	}
 	bottomChange(){
+		console.log(this._data)
 		const height = this._data.height + this._evt.deltaY
 		this._options.height = this._data.height = height > 0 ? height : 0;
 	}
@@ -59,6 +60,17 @@ class Change {
 	corner4Change() {
 		this.rightChange()
 		this.bottomChange()
+	}
+
+	moveChange() {
+		this._options.left =  this._data.left += this._evt.deltaX
+		this._data.top += this._evt.deltaY
+		this._options.top = this._data.top + this._moduleTop
+
+	}
+
+	rotateChange() {
+		this._options.rotate = this._data.rotate += this._evt.deltaY
 	}
 }
 

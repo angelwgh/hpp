@@ -1,5 +1,5 @@
 <template>
-	<div class="text-container" 
+	<div class="img-container" 
 		 @click.stop="select" 
 		 v-finger:long-tap="longTap"
 		 :style="{
@@ -11,7 +11,7 @@
 		 	transformOrigin: editorData.width/2+'px '+  editorData.height/2 + 'px',
 		 	transform: 'rotate('+editorData.rotate+'deg)'
 		 }">
-		<textarea v-model="editorData.content">文字输入</textarea>
+		<img :src="editorData.src">
 	</div>
 </template>
 <script>
@@ -43,19 +43,9 @@
 	}
 </script>
 <style lang="less" rel="stylesheet/less">
-	.text-container{
+	.img-container{
 		position: absolute;
-		width: 100%;
-		height: 20px;
-		textarea {
-			border: none;
-		    background: none;
-		    width: 100%;
-		    height: 100%;
-		    position: absolute;
-		    left: 0;
-		    top: 0;
-		}
+		overflow: hidden;
 
 	}
 	

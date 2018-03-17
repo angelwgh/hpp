@@ -3,7 +3,7 @@
 		<div class="home-inner">
 			<yd-navbar class="header">
 				<div slot="right">
-					<div class="icon"></div>
+					<div class="icon" @click="openLink('setting')"></div>
 				</div>
 			</yd-navbar>
 			<div class="containt">
