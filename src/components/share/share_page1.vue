@@ -33,7 +33,7 @@
 		position: relative;
 		width: 100%;
 		height: 100%;
-		background-image: url(/static/images/share_bg.jpg);
+		background-image: url(../../../static/images/share_bg.jpg);
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 	}
@@ -44,7 +44,7 @@
 		top:30px;
 		width: 42px;
 		height: 56px;
-		background-image: url(/static/images/icon.png);
+		background-image: url(../../../static/images/icon.png);
 		background-position: -90px -65px;
 	}
 	.m-share .btn2{
@@ -54,7 +54,7 @@
 		width: 232px;
 		height: 46px;
 		transform: translateX(-50%);
-		background-image: url(/static/images/icon.png);
+		background-image: url(../../../static/images/icon.png);
 		background-position: 0 -260px;
 	}
 

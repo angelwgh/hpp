@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="advert">
-			<img src="/static/images/advert.jpg" alt="">
+			<img :src="setsrc" alt="">
 		</div>
 		<div class="ment-list">
 			<yd-cell-group>
@@ -42,6 +42,8 @@
 	export default{
 		data () {
 			return {
+				setsrc:'./static/images/advert.jpg',
+				// setsrc:'./static/images/advert.jpg',
 				headStyle:{
 					color: '#fff',
 					bgcolor: '#000'
@@ -80,7 +82,7 @@
 						width: 40px;
 						height: 40px;
 						transform: scale(0.7);
-						background-image: url(/static/images/icon.png);
+						background-image: url(../../../../static/images/icon.png);
 
 						&.qq{
 							background-position: -160px 0;
@@ -103,7 +105,7 @@
 					display: block;
 					width: 14px;
 					height: 25px;
-					background-image: url(/static/images/icon.png);
+					background-image: url(../../../../static/images/icon.png);
 					background-position: -35px -90px;
 				}
 				.yd-cell-item{

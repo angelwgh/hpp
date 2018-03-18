@@ -3,9 +3,10 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import YDUI from 'vue-ydui/dist/ydui.px.js'
-import '@/assets/style/style.css'
+
 import AlloyFinger from 'alloyfinger'
 import AlloyFingerVue from 'alloyfinger/vue/alloy_finger.vue';
+import '@/assets/style/style.css'
 
 import store from './store'
 

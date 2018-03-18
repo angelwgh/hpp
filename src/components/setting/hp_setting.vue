@@ -12,7 +12,7 @@
 			</div>		   	
 		</yd-navbar>
 		<div class="advert">
-			<img src="/static/images/advert.jpg" alt="">
+			<img :src="setsrc" alt="">
 		</div>
 		<div class="ment-list">
 			<yd-cell-group>
@@ -56,6 +56,7 @@
 	export default{
 		data () {
 			return {
+				setsrc:'./static/images/advert.jpg',
 				headStyle:{
 					color: '#fff',
 					bgcolor: '#000'
@@ -90,7 +91,7 @@
 				display: block;
 				width: 14px;
 				height: 25px;
-				background-image: url(/static/images/icon.png);
+				background-image: url(../../../static/images/icon.png);
 				background-position: -35px -90px;
 			}
 			.yd-cell-item{

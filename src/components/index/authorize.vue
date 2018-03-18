@@ -44,7 +44,7 @@
 		width: 50px;
 		height: 50px;
 		transform: scale(0.8);
-		background-image: url(/static/images/icon.png);
+		background-image: url('../../../static/images/icon.png');
 	}
 
 	.m-authorize-box .authorize .message{

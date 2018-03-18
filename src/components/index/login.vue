@@ -38,7 +38,7 @@
 	.m-login-box .login .icons div{
 		width: 40px;
 		height: 40px;
-		background-image: url(/static/images/icon.png);
+		background-image: url(../../../static/images/icon.png);
 		background-repeat: no-repeat;
 		
 	}

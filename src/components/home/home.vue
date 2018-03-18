@@ -48,9 +48,9 @@
     		return {
     			slide: {
     				imgs:[
-    					"/static/images/slide1.jpg",
-    					"/static/images/slide2.jpg",
-    					"/static/images/slide3.jpg"
+    					"./static/images/slide1.jpg",
+    					"./static/images/slide2.jpg",
+    					"./static/images/slide3.jpg"
     				]
     			}
     		}
@@ -82,7 +82,7 @@
 		
 		width: 30px;
 		height: 30px;
-		background-image: url(/static/images/icon.png);
+		background-image: url(../../../static/images/icon.png);
 		background-position: 0 -90px;
 	}
 
@@ -102,7 +102,7 @@
 		margin: 0 auto;
 		width: 50px;
 		height: 50px;
-		background-image: url(/static/images/icon.png);
+		background-image: url(../../..//static/images/icon.png);
 		background-position: 0 -130px;
 	}
 
@@ -131,7 +131,7 @@
 		margin: 0 auto 30px;
 		width: 231px;
 		height: 63px;
-		background-image: url(/static/images/icon.png);
+		background-image: url(../../..//static/images/icon.png);
 		background-position: 0 -195px;
 	}
 </style>

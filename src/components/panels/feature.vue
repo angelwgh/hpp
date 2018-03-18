@@ -34,7 +34,7 @@
 				title:'功能栏',
 				type: {},
 				bottons:{
-					bgSrc:'/static/images/icon.png',
+					bgSrc:'./static/images/icon.png',
 					text:{
 						title:'文字编辑',
 						list:[

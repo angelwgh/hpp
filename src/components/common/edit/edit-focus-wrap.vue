@@ -183,7 +183,7 @@
 		.move-tools{
 			&>div{
 				position: absolute;
-				background-image: url(/static/images/icon.png);
+				background-image: url(../../../../static/images/icon.png);
 			}
 			.move{
 

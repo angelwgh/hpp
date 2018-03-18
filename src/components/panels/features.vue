@@ -19,7 +19,8 @@
 		            <yd-cell-item 
 		            	v-for="item in menus" 
 		            	:key="item.id"
-		            	v-finger:tap="tap.bind(this, item.name)">
+		            	@click.native="tap(item.name)"
+		            	>
 		                <span slot="left">{{item.title}}</span>
 		                <span slot="right"><i class="icon-right-arrow"></i></span>
 		            </yd-cell-item>
@@ -114,7 +115,7 @@
 				display: block;
 				width: 14px;
 				height: 25px;
-				background-image: url(/static/images/icon.png);
+				background-image: url(../../../static/images/icon.png);
 				background-position: -35px -90px;
 			}
 			.yd-cell-item{

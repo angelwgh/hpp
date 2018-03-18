@@ -23,7 +23,7 @@
 				<yd-navbar-back-icon :color="headStyle.color">返回</yd-navbar-back-icon>
 			</div>
 			<div slot="right" :style="{color: headStyle.color}">
-				<i class="iconfont icon-jia" v-finger:tap="openFeatures"></i>
+				<i class="iconfont icon-jia" @click="openFeatures"></i>
 			</div>		   	
 		</yd-navbar>
 		<div class="container">
@@ -73,7 +73,7 @@
 				this.$router.go(-1)
 			},
 			openFeatures() {
-				// console.log(1111)
+				console.log(1111)
 				this.$router.push({name:'panels_features'})
 			}
 		}

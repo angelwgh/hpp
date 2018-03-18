@@ -80,7 +80,7 @@
 		margin: 0 auto;
 		width: 40px;
 		height: 40px;
-		background-image: url(/static/images/icon.png);
+		background-image: url(../../../static/images/icon.png);
 		background-position: -210px 0;
 	}
 

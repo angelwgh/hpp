@@ -29,8 +29,8 @@
 
       return {
         imgs:[
-          "/static/images/banner01.jpg",
-          "/static/images/banner02.jpg"
+          "./static/images/banner01.jpg",
+          "./static/images/banner02.jpg"
         ],
         step:0,
         windowSize:{

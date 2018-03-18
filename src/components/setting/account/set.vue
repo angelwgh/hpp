@@ -67,7 +67,7 @@
 			.icon-top{
 				width: 50px;
 				height: 50px;
-				background-image: url(/static/images/icon.png);
+				background-image: url(../../../../static/images/icon.png);
 
 				&.icon-top1{
 					// background-position: 0 -320px;

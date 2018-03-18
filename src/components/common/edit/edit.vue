@@ -89,7 +89,7 @@
 							{
 								type: 'img',
 								componentName: 'img-container',
-								src:'/static/images/slide1.jpg',
+								src:'./static/images/slide1.jpg',
 								top:30,
 								left:30,
 								width: 50,
