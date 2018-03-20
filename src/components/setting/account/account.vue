@@ -1,7 +1,10 @@
+<!-- 
+账号管理 主页面，包含路由
+ -->
 <template>
 	<div class="m-acount">
 		<yd-navbar slot="navbar"
-				   :title="title"
+				   :title="headerInfo.title"
 				   :bgcolor="headStyle.bgcolor"
 				   :color="headStyle.color">
 			<div slot="left" :style="{color: headStyle.color}" @click="back">
@@ -17,6 +20,7 @@
 	</div>
 </template>
 <script>
+import { mapGetters ,mapMutations } from 'vuex'
 	export default{
 		data () {
 			return {
@@ -28,10 +32,18 @@
 				// title:'设置首页'
 			}
 		},
+		computed: {
+			...mapGetters('setting',{
+				headerInfo: 'getHeaderInfo'
+			})
+		},
 		methods: {
 			back () {
 				this.$router.go(-1)
 			}
+		},
+		created () {
+
 		}
 	}
 </script>

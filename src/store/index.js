@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import setting from './settting.js'
+console.log(setting)
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -11,7 +12,14 @@ export default new Vuex.Store({
 		},
 		title: 'hpp',
 		isStartUp: true,
-		indexShow:'startUp'
+		indexShow:'startUp',
+		// settingData:{
+		// 	title:'嗨披设置',
+
+		// 	account: {
+		// 		title:'账号管理',
+		// 	}
+		// }
 	},
 	getters: {
 		getSatrtUpState (state) {
@@ -34,5 +42,8 @@ export default new Vuex.Store({
 	  		state.indexShow = name
 	  	
 	  	}
-	}
+	},
+	modules: {
+			setting
+		}
 })

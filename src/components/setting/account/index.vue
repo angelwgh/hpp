@@ -1,3 +1,4 @@
+<!-- 账号管理首页 -->
 <template>
 	<div>
 		<div class="advert">
@@ -39,6 +40,7 @@
 	</div>
 </template>
 <script>
+	import { mapGetters ,mapMutations } from 'vuex'
 	export default{
 		data () {
 			return {
@@ -58,7 +60,17 @@
 			},
 			tap (type) {
 				this.$router.push({name:'account_set', params:{type: type}})
+			},
+			...mapMutations('setting', {
+				setHeaderInfo: 'setHeaderInfo'
+			}),
+
+			setTitle(title) {
+				this.setHeaderInfo({title: title})
 			}
+		},
+		created () {
+			this.setTitle('账号管理')
 		}
 	}
 </script>

@@ -22,17 +22,20 @@
 				v-finger:touch-end="unBlockPage"
 				v-finger:press-move="pressMove.bind(this,'rotate')">
 			</div>
-			<div class="delete"
+			
+		</div>
+		<div class="edit-tools" v-if="options.move">
+			<!-- <div class="delete"
 				v-finger:tap="remove">
 				
 			</div>
 			<div class="bg-color"
 				v-finger:tap="singleTap.bind(this,'bgColor')">
 				
-			</div>
-		</div>
-		<div class="edit-tools">
-			
+			</div> -->
+			<div v-for="item in toolsBar.textEdit"
+				 :class="[item]"
+				 v-finger:tap="singleTap.bind(this, item)"></div>
 		</div>
 		<div class="corners" 
 			:class="[cornerColorClass]"
@@ -113,6 +116,13 @@
 				default: null
 			}
 		},
+		data () {
+			return {
+				toolsBar: {
+					textEdit: ['delete', 'set-style', 'copy', 'paste', 'lock' ]
+				}
+			}
+		},
 		computed: {
 			cornerColorClass () {
 				console.log(this.options.model)
@@ -121,11 +131,6 @@
 		},
 		methods:{
 			pressMove (type,evt) {
-				// evt.stopPropagation()
-				// console.log(evt)
-				// console.log(this.options.height)
-				// this.options.height += evt.deltaY 
-				// console.log(this.options)
 				this.$emit('move',evt,type)
 			},
 			blockPage () {
@@ -139,7 +144,7 @@
 				this.$emit('remove', this.options.type)
 			},
 			singleTap (type){
-				this.$emit(type, )
+				this.$emit('edit', type)
 			}
 		},
 		mounted () {
@@ -206,25 +211,43 @@
 				
 				background-position: -180px -65px;
 			}
-
-			.delete{
-
-				top: -30px;
+		}
+		
+		.edit-tools {
+			position: absolute;
+		    top: -28px;
+		    display: flex;
+			&>div{
+				margin-right: 5px;
 				width: 50px;
 				height: 27px;
-	
+				background-image: url(../../../../static/images/icon.png);
+			}
+
+			.delete{
 				background-position: -260px 0;
 			}
 
 			.bg-color{
-				top: -30px;
-				left: 60px;
-				width: 50px;
-				height: 27px;
 				background-position: -260px -180px;
 			}
-		}
 
+			.set-style{
+				background-position: -260px -60px;
+			}
+
+			.copy {
+				background-position: -260px -120px;
+			}
+
+			.paste {
+				background-position: -260px -90px;
+			}
+
+			.lock {
+				background-position: -260px -30px;
+			}
+		}
 
 	}
 </style>

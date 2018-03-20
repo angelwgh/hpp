@@ -1,3 +1,4 @@
+<!-- 嗨披详情设置 -->
 <template>
 	<div>
 		<yd-navbar slot="navbar"
@@ -20,8 +21,12 @@
 	                <span slot="left">账号管理</span>
 	                <span slot="right"><i class="icon-right-arrow"></i></span>
 	            </yd-cell-item>
-	            <yd-cell-item>
+	            <yd-cell-item v-finger:tap="tap.bind(this,'cardbage')">
 	                <span slot="left">我的券包</span>
+	                <span slot="right"><i class="icon-right-arrow"></i></span>
+	            </yd-cell-item>
+	            <yd-cell-item v-finger:tap="tap.bind(this,'apply_member')">
+	                <span slot="left">申请会员</span>
 	                <span slot="right"><i class="icon-right-arrow"></i></span>
 	            </yd-cell-item>
 	        </yd-cell-group>

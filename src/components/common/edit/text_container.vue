@@ -1,7 +1,10 @@
 <template>
-	<div class="text-container" 
+	<div class="text-container"
+		 
 		 @click.stop="select" 
-		 v-finger:long-tap="longTap"
+		 @touchstart.stop="touchstart"
+		 @touchmove.stop="touchmove"
+		 @touchend.stop="touchend"
 		 :style="{
 		 	left: editorData.left + 'px',
 		 	top: editorData.top + 'px',
@@ -29,16 +32,42 @@
 				type: Number
 			}
 		},
+		data () {
+			return {
+				longtouchTimeout: null
+			}
+		},
 		methods: {
 			select () {
-				// console.log(this.moduleIndex)
+				console.log(this.moduleIndex)
 				this.$emit('select', this.editorData, this.moduleIndex,this.editorIndex)
 			},
-			longTap(evt) {
-				// 长按事件
-				console.log(111111111111)
-				this.$emit('longtap', this.editorData)
-			}
+			touchstart(){
+				console.log('touchstart')
+				this.longtouchTimeout = setTimeout(() => {
+					this.longtouch()
+				},500)
+
+			},
+			touchmove() {
+				this.cancelLongtouch()
+			},
+			touchend() {
+				// console.log('touchend')
+				this.cancelLongtouch()
+			},
+			longtouch() {
+				console.log('长按事件')
+				this.$emit('longtouch', this.editorData)
+			},
+			cancelLongtouch: function () {
+	            clearTimeout(this.longtouchTimeout);
+	        }
+			// longTap(evt) {
+			// 	// 长按事件
+			// 	// console.log(111111111111)
+			// 	this.$emit('longtouch', this.editorData)
+			// }
 		}
 	}
 </script>

@@ -1,3 +1,4 @@
+<!-- 账号设置，如微信、QQ等 -->
 <template>
 	<div class="m-account-set">
 		<div class="bar1 flex">
@@ -27,6 +28,7 @@
 	</div>
 </template>
 <script>
+	import { mapGetters ,mapMutations } from 'vuex'
 	export default{
 		data () {
 			return {
@@ -52,9 +54,18 @@
 				if(type === 'switch'){
 					this.$router.push({name:'account_siwtch'})
 				}
+			},
+
+			...mapMutations('setting', {
+				setHeaderInfo: 'setHeaderInfo'
+			}),
+
+			setTitle(title) {
+				this.setHeaderInfo({title: title})
 			}
 		},
 		created() {
+			this.setTitle('账号管理')
 			this.type = this.$route.params.type
 			console.log(this.$route.params)
 		}

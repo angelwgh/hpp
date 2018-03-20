@@ -12,10 +12,14 @@
 				}"
 				@click="selectModule(module, moduleIndex)"
 				>
+				<!-- 
+					编辑器模块组件，文本编辑器和图片编辑器
+					
+				 -->
 				<components v-for="(editor, editorIndex) in module.editors"
 							:is="editor.componentName"
 							@select="select"
-							@longtap="longTap"
+							@longtouch="longtouch"
 							:key="editorIndex"
 							:editorData="editor"
 							:moduleIndex="moduleIndex"
@@ -29,7 +33,7 @@
 			 v-show="currentMudule"
 			 :options="options"
 			 @move="change"
-			 @remove="remove">
+			 @edit="edit">
 		</edit-focus-wrap>
 	</div>
 </template>
@@ -38,7 +42,17 @@
 	import imgContainer from './img_container.vue'
 	import editFocusWrap from './edit-focus-wrap.vue'
 	import change from './js/change'
+	import editor from './js/editor'
 	import util from '@/assets/util'
+
+	const EVENTMAP = {
+		'delete': 'remove',
+		'set-style': 'setStyle',
+		'copy': 'copy',
+		'paste': 'paste',
+		'lock' : 'lock'
+	}
+
 	export default{
 		components: {
 			textContainer,
@@ -48,10 +62,12 @@
 		data() {
 			return {
 				winWidth:0,
-				currentMudule:null,
-				currentType:'',
-				moduleIndex: -1,
-				editorIndex: -1,
+				currentMudule:null, // 当前选择的模块
+				currentEditor: null, // 当前选中的编辑器
+				currentType:'',	 // 当前选择模块的类型 是模块 还是 编辑器
+				moduleIndex: -1, // 当前模块的序号
+				editorIndex: -1, // 当前编辑器在模块中的序号
+				// 编辑器数据
 				editModules:[
 					{	
 						editors:[
@@ -104,6 +120,8 @@
 						}
 					}
 				],
+
+				// 节点工具框参数
 				options: {
 					type:'text',
 					left:20,
@@ -123,6 +141,7 @@
 				let top = 0;
 				const index = this.moduleIndex;
 				const editModules = this.editModules
+
 				for( let i = 0; i < this.moduleIndex; i++){
 					top += parseInt(editModules[i].style.height)
 				}
@@ -135,10 +154,10 @@
 			test () {
 				console.log(11)
 			},
-			select(editor, moduleIndex,editorIndex){
+			select(editor, moduleIndex, editorIndex){
 				// 选择编辑区域
 				// console.log(arguments)
-				if(this.editor == editor && this.currentType == 'editor'){
+				if(this.currentEditor === editor && this.currentType == 'editor'){
 					console.log(true)
 					this.changeOptionsModel()
 					return
@@ -146,7 +165,7 @@
 				this.moduleIndex = moduleIndex;
 				this.editorIndex = editorIndex
 				this.currentMudule = this.editModules[moduleIndex];
-				this.editor = editor;
+				this.currentEditor = editor;
 				this.currentType = 'editor'
 				const data = {
 					type: editor.type,
@@ -163,11 +182,13 @@
 
 			selectModule(module, index){
 				// 选择模块
+				console.log('selectModule')
 				if(this.currentMudule == module && this.currentType === 'module'){
 					console.log(index)
 					// this.changeOptionsModel()
 					return
 				}
+				this.currentEditor = null;
 				this.currentMudule = module;
 				this.moduleIndex = index;
 				this.currentType = 'module'
@@ -186,7 +207,7 @@
 			},
 
 			setOptions(data) {
-				// 设置编辑框参数
+				// 设置节点工具框参数
 				// console.log(data)
 				for(let k in data){
 					this.options[k] = data[k]
@@ -210,7 +231,7 @@
 				// 移动、改变编辑框大小
 				console.log(this.currentMudule)
 				if(this.currentType === 'editor'){
-					change.change(evt, type, this.editor,this.options, this.moduleTop)
+					change.change(evt, type, this.currentEditor,this.options, this.moduleTop)
 				}else if(this.currentType === 'module') {
 					if(type === 'bottom'){
 						change.change(evt, 'bottom', this.currentMudule.style, this.options, this.moduleTop)
@@ -219,6 +240,16 @@
 				
 				
 			},
+
+			edit(type) {
+				console.log(type)
+				if(this.currentType=='editor'){
+					this[EVENTMAP[type]]()
+				}
+
+			},
+
+
 
 			remove(type) {
 				if(type === 'module'){
@@ -231,15 +262,16 @@
 				
 			},
 
-			longTap(data){
-				// console.log(data)
-				// 长按事件
-				if(this.options.model === 1){
-					this.options.wordEdit = !this.options.wordEdit
-				}else if(this.options.model === 2){
-					this.options.move = !this.options.move
-					
+			longtouch(editor){
+				if(editor === this.currentEditor){
+					if(this.options.model === 1){
+						this.options.wordEdit = !this.options.wordEdit
+					}else if(this.options.model === 2){
+						this.options.move = !this.options.move
+						
+					}
 				}
+				
 				// console.log(this.options)
 			}
 

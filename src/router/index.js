@@ -79,8 +79,36 @@ export default new Router({
               component: () => import('@/components/setting/account/switch_account.vue')
             }
           ]
+        },{
+          path:'bindtel',
+          name:'account_bindtel',
+          component: () => import('@/components/setting/account/bind-tel.vue')
+        },{
+          path:'findpsw',
+          name:'account_findpsw',
+          component: () => import('@/components/setting/account/find-pws.vue')
+        },
+        {
+          path:'cardbage',
+          name:'cardbage',
+          component: () => import('@/components/setting/cardbage/card-bage.vue')
+        },
+        {
+          path:'cardbage_give',
+          name:'cardbage_give',
+          component: () => import('@/components/setting/cardbage/give_frend.vue')
+        },
+        {
+          path:'apply_member',
+          name:'apply_member',
+          component: () => import('@/components/setting/apply_member.vue')
         }
       ]
+    },
+    {
+      path:'/pay',
+      name: 'pay',
+      component: () => import('@/components/pay/pay.vue')
     }
   ]
 })
