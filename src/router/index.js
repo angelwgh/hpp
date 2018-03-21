@@ -32,6 +32,21 @@ export default new Router({
       component: () => import('@/components/panels/new_user_panel.vue')
     },
     {
+      path:'/hpp_panel',
+      name: 'hpp_panel',
+      component: () => import('@/components/panels/hpp_panel.vue')
+    },
+    {
+      path: '/hpp_text_style',
+      name: 'hpp_text_style',
+      component: () => import('@/components/panels/text_style.vue')
+    },
+    {
+      path: '/color_picker',
+      name: 'color_picker',
+      component: () => import('@/components/panels/color_picker.vue')
+    },
+    {
       path:'/panels_features',
       name: 'panels_features',
       component: () => import('@/components/panels/features.vue')
@@ -41,11 +56,7 @@ export default new Router({
       name: 'panels_feature',
       component: () => import('@/components/panels/feature.vue')
     },
-    {
-      path:'/hpp_panel',
-      name: 'hpp_panel',
-      component: () => import('@/components/panels/hpp_panel.vue')
-    },
+    
     {
       path:'/share',
       name: 'share',

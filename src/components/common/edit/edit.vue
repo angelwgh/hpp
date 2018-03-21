@@ -59,68 +59,24 @@
 			imgContainer,
 			editFocusWrap
 		},
+		props:{
+			editorData:{
+				type: Object,
+				default:{
+
+				}
+			},
+		},
 		data() {
 			return {
 				winWidth:0,
-				currentMudule:null, // 当前选择的模块
+				currentMudule: null,
 				currentEditor: null, // 当前选中的编辑器
 				currentType:'',	 // 当前选择模块的类型 是模块 还是 编辑器
 				moduleIndex: -1, // 当前模块的序号
 				editorIndex: -1, // 当前编辑器在模块中的序号
 				// 编辑器数据
-				editModules:[
-					{	
-						editors:[
-							{
-								type: 'text',
-								componentName: 'text-container',
-								content:'text1',
-								top:30,
-								left:30,
-								width: 300,
-								height: 30,
-								rotate:0
-							},
-							{
-								type: 'text',
-								componentName: 'text-container',
-								content:'text2',
-								top:80,
-								left:30,
-								width: 300,
-								height: 30,
-								rotate:0
-							}
-						],
-
-						name: 'text-container',
-						style:{
-							bgc:'#fff',
-							width:'100%',
-							height:400
-						}
-					},
-					{
-						editors:[
-							{
-								type: 'img',
-								componentName: 'img-container',
-								src:'./static/images/slide1.jpg',
-								top:30,
-								left:30,
-								width: 50,
-								height: 80,
-								rotate:0
-							}
-						],
-						style:{
-							bgc:'#fff',
-							width:'100%',
-							height:300
-						}
-					}
-				],
-
+				editModules: null,
 				// 节点工具框参数
 				options: {
 					type:'text',
@@ -151,6 +107,18 @@
 		},
 
 		methods: {
+			init () {
+				this.winWidth = util.size().width
+				// console.log(this.editorData)
+				const editorData = this.editorData
+				this.editModules = editorData.editModules;
+				if(editorData.moduleIndex >= 0 ){
+					this.currentMudule = this.editModules[editorData.moduleIndex]
+					this.moduleIndex = editorData.moduleIndex
+					this.selectModule(this.currentMudule, this.moduleIndex)
+				}
+				
+			},
 			test () {
 				console.log(11)
 			},
@@ -242,14 +210,17 @@
 			},
 
 			edit(type) {
-				console.log(type)
+				// console.log(type)
 				if(this.currentType=='editor'){
 					this[EVENTMAP[type]]()
 				}
 
 			},
 
-
+			setStyle () {
+				this.$emit('tap', 'hpp_text_style')
+				// console.log(this.currentEditor)
+			},
 
 			remove(type) {
 				if(type === 'module'){
@@ -278,9 +249,11 @@
 		},
 
 		created(){
+			this.init();
 			// 获取设备宽度
-			this.winWidth = util.size().width
+			
 			// console.log(this.winWidth)
+			console.log(this)
 		}
 	}
 </script>

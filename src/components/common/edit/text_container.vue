@@ -6,15 +6,24 @@
 		 @touchmove.stop="touchmove"
 		 @touchend.stop="touchend"
 		 :style="{
-		 	left: editorData.left + 'px',
-		 	top: editorData.top + 'px',
-		 	width: editorData.width + 'px',
-		 	height: editorData.height + 'px',
-		 	backgroundColor:'#ccc',
-		 	transformOrigin: editorData.width/2+'px '+  editorData.height/2 + 'px',
-		 	transform: 'rotate('+editorData.rotate+'deg)'
+		 	
 		 }">
-		<textarea v-model="editorData.content">文字输入</textarea>
+		<textarea v-model="editorData.content"
+			:style="{
+				left: editorData.left + 'px',
+				top: editorData.top + 'px',
+				width: editorData.width + 'px',
+				height: editorData.height + 'px',
+				transformOrigin: editorData.width/2+'px '+  editorData.height/2 + 'px',
+				transform: 'rotate('+editorData.rotate+'deg)',
+				fontFamily: editorData.fontFamily,
+				fontSize: editorData.fontSize + 'px',
+				letterSpacing: editorData.letterSpacing + 'px',
+				color: editorData.color,
+				textAlign: editorData.textAlign,
+				webkitTextStrokeColor: editorData.webkitTextStrokeColor,
+				webkitTextStrokeWidth: editorData.webkitTextStrokeWidth + 'px'
+			}">文字输入</textarea>
 	</div>
 </template>
 <script>
@@ -43,7 +52,7 @@
 				this.$emit('select', this.editorData, this.moduleIndex,this.editorIndex)
 			},
 			touchstart(){
-				console.log('touchstart')
+				// console.log('touchstart')
 				this.longtouchTimeout = setTimeout(() => {
 					this.longtouch()
 				},500)
